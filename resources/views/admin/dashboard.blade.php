@@ -29,9 +29,8 @@
                 @method('DELETE')
               <button class="text-red-500">Delete</button>
               </form>|
-              <a href="" class="text-green-500">Edit</a>
+              <a href="{{route('edit.question',[$question->id])}}" class="text-green-500">Edit</a>
             </div>
-        
             <div class="block lg:w-1/2 sm:mb-2 ">
             @foreach ($question->answer as $answer)
               <div class="w-full lg:w-3/4 px-4 py-2">
