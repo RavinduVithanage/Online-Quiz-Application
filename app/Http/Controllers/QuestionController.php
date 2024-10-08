@@ -82,6 +82,20 @@ class QuestionController extends Controller
     });
     return redirect()->route('dashboard'); 
   }
+  public function deleteQuestion(string $questionId)
+  {
+      $question = Question::with('answer')->findOrFail($questionId);
+  
+      // Delete the related answer(s)
+      if ($question->answer) {
+          $question->answer()->delete();
+      }
+  
+      // Delete the question
+      $question->delete();
+      return redirect()->route('dashboard')->with('success','delete successfull'); 
+  }
+  
 
     
 }

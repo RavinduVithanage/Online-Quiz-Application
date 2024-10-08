@@ -24,7 +24,7 @@
               <p class="text-base leading-relaxed xl:w-2/4 lg:w-3/4 ">
                 {{$question->question}}
               </p>
-              <form action="" method="POST">
+              <form action="{{route('delete.question',[$question->id])}}" method="POST">
                 @csrf
                 @method('DELETE')
               <button class="text-red-500">Delete</button>
