@@ -9,10 +9,11 @@ use Illuminate\Http\Request;
 
 class UserController extends Controller
 {
-    public function showUserDashBoard(Request $request){
+    public function showUserDashBoard(){
 
-     
-        return view('user.dashboard');
+        $questions=Question::with('answer')->get();
+ 
+        return view('user.dashboard')->with(['questions'=> $questions]);
     }
    
 }
