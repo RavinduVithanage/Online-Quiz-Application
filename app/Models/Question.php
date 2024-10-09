@@ -20,8 +20,7 @@ class Question extends Model
     public function answer(): HasMany{
        return $this->hasMany(Answer::class);
     }
-
     public function userAnswer(): HasMany{
         return $this->hasMany(UserAnswer::class);
-     }
+   }
 }

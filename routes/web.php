@@ -34,6 +34,7 @@ Route::middleware(['auth','role:user'])->group(function(){
     Route::delete('/profile', [ProfileController::class, 'destroy'])->name('profile.destroy');
 
     Route::get('/user/dashboard',[UserController::class,'showUserDashboard'])->name('user.dashboard');
+    Route::post('/user/answer/{questionId}',[UserController::class,'userAnswer'])->name('user.answer');
 
 });
 
