@@ -3,6 +3,7 @@
 use App\Http\Controllers\AdminController;
 use App\Http\Controllers\ProfileController;
 use App\Http\Controllers\QuestionController;
+use App\Http\Controllers\UserController;
 use Illuminate\Support\Facades\Route;
 
 
@@ -23,6 +24,16 @@ Route::middleware(['auth','role:admin'])->group(function(){
     Route::get('/edit-question/{questionId}',[QuestionController::class,'editQuestion'])->name('edit.question');
     Route::put('/update-question/{questionId}',[QuestionController::class,'updateQuestion'])->name('update.question');
     Route::delete('/delete-question/{questionId}',[QuestionController::class,'deleteQuestion'])->name('delete.question');
+
+});
+
+Route::middleware(['auth','role:user'])->group(function(){
+
+    Route::get('/profile', [ProfileController::class, 'edit'])->name('profile.edit');
+    Route::patch('/profile', [ProfileController::class, 'update'])->name('profile.update');
+    Route::delete('/profile', [ProfileController::class, 'destroy'])->name('profile.destroy');
+
+    Route::get('/user/dashboard',[UserController::class,'showUserDashboard'])->name('user.dashboard');
 
 });
 
